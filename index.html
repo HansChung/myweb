@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>格鬥遊戲</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding: 20px;
+        }
+
+        #gameCanvas {
+            border: 3px solid #666;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .instructions {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            width: 800px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .player-section {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .player-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .player-section h3 {
+            margin: 0 0 15px 0;
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            font-size: 1.5em;
+        }
+
+        .player-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .player-section li {
+            margin: 10px 0;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .player-section li:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .key {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-left: 5px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #preloadImages {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="instructions">
+            <div class="player-controls">
+                <div class="player-section">
+                    <h3>🎮 玩家一 控制</h3>
+                    <ul>
+                        <li>移動 <span class="key">A</span> <span class="key">D</span></li>
+                        <li>跳躍 <span class="key">W</span></li>
+                        <li>攻擊 <span class="key">F</span></li>
+                        <li>必殺技 <span class="key">R</span></li>
+                    </ul>
+                </div>
+                <div class="player-section">
+                    <h3>🎮 玩家二 控制</h3>
+                    <ul>
+                        <li>移動 <span class="key">←</span> <span class="key">→</span></li>
+                        <li>跳躍 <span class="key">↑</span></li>
+                        <li>攻擊 <span class="key">/</span></li>
+                        <li>必殺技 <span class="key">.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        
+        <div id="preloadImages">
+            <img id="player1Walk" src="role/player1/walk.png" />
+            <img id="player1Attack" src="role/player1/attack.png" />
+            <img id="player1Jump" src="role/player1/jump.png" />
+            <img id="player2Walk" src="role/player2/walk.png" />
+            <img id="player2Attack" src="role/player2/attack.png" />
+            <img id="player2Jump" src="role/player2/jump.png" />
+            <img id="backgroundImage" src="role/background/BG.png" />
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
